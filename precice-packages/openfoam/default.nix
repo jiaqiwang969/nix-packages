@@ -42,7 +42,7 @@
     export WM_ARCH=$BUILD_PLATFORM$WM_COMPILER_LIB_ARCH
     export WM_OPTIONS=$WM_ARCH$WM_COMPILER$WM_PRECISION_OPTION$WM_LABEL_OPTION$WM_COMPILE_OPTION
 
-    export OPENFOAM_SRC_PATH=/build/openfoam-9
+    export OPENFOAM_SRC_PATH=/build/OpenFOAM-9-c96968a
 
     export WM_PROJECT_DIR=$OPENFOAM_SRC_PATH
 
@@ -133,7 +133,7 @@ in
       cp -r ./tutorials $out/
       cp -r ./wmake $out/
 
-      sed -i "s^/build/openfoam-9^$out^" $out/bin/set-openfoam-vars
+      sed -i "s^/build/OpenFOAM-9-c96968a^$out^" $out/bin/set-openfoam-vars
 
     '';
 
