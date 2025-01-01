@@ -10,14 +10,15 @@
 
 python3.pkgs.buildPythonPackage rec {
   pname = "pyprecice";
-  version = "2.5.0.2";
+  version = "3.1.2";  # 更新为 3.1.2
 
   src = fetchFromGitHub {
     owner = "precice";
     repo = "python-bindings";
-    rev = "v${version}";
-    hash = "sha256-ppDilMwRxVsikTFQMNRYL0G1/HvVomz2S/2yx43u000=";
+    rev = "1f750461c1d023f4de5d394804393be0566f904e";  # 更新为新的 rev
+    hash = "sha256-/atuMJVgvY4kgvrB+LuQZmJuSK4O8TJdguC7NCiRS2Y=";  # 更新为新的 hash
   };
+
 
   nativeBuildInputs = with python3.pkgs; [
     cython

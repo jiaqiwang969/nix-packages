@@ -12,7 +12,7 @@
   home-manager.users.precice =
     { pkgs, ... }:
     {
-      home.stateVersion = "22.11";
+      home.stateVersion = "24.11";
       home.file = {
         "keyboard-settings" = {
           source = "${pkgs.xfce.xfce4-settings.out}/share/applications/xfce-keyboard-settings.desktop";
@@ -212,5 +212,5 @@
 
   services.openssh.enable = true;
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "24.11";
 }
