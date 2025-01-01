@@ -10,16 +10,18 @@
   enableTimings ? false,
 }:
 
+
 stdenv.mkDerivation rec {
   pname = "precice-openfoam-adapter";
-  version = "1.2.1";
+  version = "OpenFOAM9";  # 修改为 OpenFOAM9 分支
 
   src = fetchFromGitHub {
     owner = "precice";
     repo = "openfoam-adapter";
-    rev = "v${version}";
-    hash = "sha256-+8VfiKIXzWXu2L/hd3IJV56BBWM/Nb73DWv4BTHvBbQ=";
+    rev = "a2885806836a4f516abce0be52128aa5083320fe";  # 更新为新的 rev
+    hash = "sha256-C1B1WYct/VRwEBGJp7suCU4z1ymBcjIfBOBiAhrHy1c=";  # 更新为新的 hash
   };
+
 
   nativeBuildInputs = [
     openfoam
