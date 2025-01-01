@@ -84,7 +84,7 @@ in
 
     src = fetchgit {
       url = "https://github.com/OpenFOAM/OpenFOAM-9.git";
-      rev = "20220602";
+      rev = "c96968adf6d87570a0e4358be55e740a67e190a6";
       inherit hash;
     };
 
