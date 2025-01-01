@@ -14,24 +14,24 @@
   openmpi,
 }:
 let
-  ccx_version = "2.20";
+  ccx_version = "2.20";  # 保持 CalculiX 版本不变
   ccx = fetchzip {
     urls = [
       "https://www.dhondt.de/ccx_2.20.src.tar.bz2"
       "https://web.archive.org/web/20240302101853if_/https://www.dhondt.de/ccx_2.20.src.tar.bz2"
     ];
-    hash = "sha256-bCmG+rcQDJrcwDci/WOAgjfbhy1vxdD+wnwRlt/ovKo=";
+    hash = "sha256-bCmG+rcQDJrcwDci/WOAgjfbhy1vxdD+wnwRlt/ovKo=";  # 保持 CalculiX 的 hash 不变
   };
 in
 stdenv.mkDerivation rec {
   pname = "calculix-adapter";
-  version = "${ccx_version}.0";
+  version = "2.20.1";  # 更新为 2.20.1
 
   src = fetchFromGitHub {
     owner = "precice";
     repo = pname;
-    rev = "v${version}";
-    hash = "sha256-zyJ9VOpmjyBeettPWA3bFZIfyJuvs5D1nMxRcP5ySRY=";
+    rev = "51cf77765a0fe0badd86e541deb3eb914ee8a9f9";  # 更新为新的 rev
+    hash = "sha256-TT6yBOlJbGwSoYU9BQhAanrDy5IxE7eaEDgSw3lC0f8=";  # 更新为新的 hash
   };
 
   nativeBuildInputs = [
