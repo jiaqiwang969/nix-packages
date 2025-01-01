@@ -133,7 +133,7 @@ in
       cp -r ./tutorials $out/
       cp -r ./wmake $out/
 
-      sed -i "s^/build/OpenFOAM-9-2022060^$out^" $out/bin/set-openfoam-vars
+      sed -i "s^/build/openfoam-9^$out^" $out/bin/set-openfoam-vars
 
     '';
 
