@@ -2,7 +2,7 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  gcc,
+  gcc9,
   mpi,
   perl,
 }:
@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [
-    gcc
+    gcc9
     mpi
   ];
 

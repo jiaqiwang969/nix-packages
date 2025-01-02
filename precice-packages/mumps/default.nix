@@ -2,7 +2,7 @@
   lib,
   stdenv,
   fetchurl,
-  gcc,
+  gcc9,
   gfortran,
   openmpi,
   blas,
@@ -89,7 +89,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [
-    gcc
+    gcc9
     gfortran
     openmpi
   ];

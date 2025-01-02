@@ -4,7 +4,7 @@
   stdenv,
   fetchFromGitHub,
   cmake,
-  gcc,
+  gcc9,
   precice,
   boost,
   vtk_9,
@@ -44,7 +44,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     cmake
-    gcc
+    gcc9
     libGL
     libX11
     precice

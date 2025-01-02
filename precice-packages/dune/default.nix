@@ -4,7 +4,7 @@
   symlinkJoin,
   fetchFromGitLab,
   fetchFromGitHub,
-  gcc,
+  gcc9,
   cmake,
   ninja,
   pkg-config,
@@ -139,7 +139,7 @@ let
       ];
 
       nativeBuildInputs = [
-        gcc
+        gcc9
         cmake
         ninja
         pkg-config

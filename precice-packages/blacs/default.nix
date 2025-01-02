@@ -3,7 +3,7 @@
   stdenv,
   fetchurl,
   bash,
-  gcc,
+  gcc9,
   gfortran,
   openmpi,
 }:
@@ -90,7 +90,7 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [
-    gcc
+    gcc9
     gfortran
     openmpi
   ];

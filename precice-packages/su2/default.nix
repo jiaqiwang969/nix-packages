@@ -3,7 +3,7 @@
   stdenv,
   fetchFromGitHub,
   autoreconfHook,
-  gcc,
+  gcc9,
   python3,
   pkg-config,
   precice,
@@ -90,7 +90,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     autoreconfHook
-    gcc
+    gcc9
     python3
     pkg-config
     precice

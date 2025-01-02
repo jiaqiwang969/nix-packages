@@ -176,7 +176,7 @@
         git
         cmakeWithGui
         gnumake
-        gcc
+        gcc9
         nano
         neovim
         gnome.gedit

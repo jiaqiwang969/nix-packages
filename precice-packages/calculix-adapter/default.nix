@@ -3,7 +3,7 @@
   stdenv,
   fetchFromGitHub,
   fetchzip,
-  gcc,
+  gcc9,
   pkg-config,
   arpack,
   lapack,
@@ -35,7 +35,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
-    gcc
+    gcc9
     pkg-config
     arpack
     lapack
