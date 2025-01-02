@@ -18,10 +18,9 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "jiaqiwang969";
     repo = "openfoam-adapter";
-    rev = "da8ad812db8db18f63876be33ca72da38cb1c9fa";  # 更新为新的 rev
-    hash = "sha256-8S4yooC1DOHd4Se30yTzGtKG5gaIElXSBiHYgA706Do=";  # 更新为新的 hash
+    rev = "408cb6e723595579c0fb08677c8b359eb504c2c4";
+    hash = "sha256-KyYSzkl6hotte4cZZtdIhu+t9hamMyofPC7rCqyiqO4=";
   };
-
 
   nativeBuildInputs = [
     openfoam
