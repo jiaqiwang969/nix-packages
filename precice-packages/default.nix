@@ -89,7 +89,7 @@
     };
     openfoamv9 = super.callPackage ./openfoam {
        version = "9";
-       hash = "sha256-fZQfueDyHYvQ0KKiKbqhJ5kJ7PFsjgRVGN5YaltrJTs=";
+       hash = "sha256-wcC6gcSrVqEsvP16002/pDNAZvZXBfoMiqvUisgMsFI=";
     };
     openfoam = self.openfoamv9;
     precice-openfoam-adapter = super.callPackage ./openfoam-adapter { };
