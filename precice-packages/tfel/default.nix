@@ -2,7 +2,7 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  gcc9,
+  gcc,
   cmake,
   gfortran,
   python3,
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
-    gcc9
+    gcc
     gfortran
     cmake
     python3

@@ -4,7 +4,7 @@
   stdenvNoCC,
   fetchurl,
   fetchFromGitHub,
-  gcc9,
+  gcc,
   gfortran,
   cmake,
   tk,
@@ -57,7 +57,7 @@ stdenv.mkDerivation rec {
   patches = [ ./0001-fix-site-packages.patch ];
 
   nativeBuildInputs = [
-    gcc9
+    gcc
     gfortran
     cmake
     python3
@@ -74,7 +74,7 @@ stdenv.mkDerivation rec {
       runHook preBuild
 
       # TODO: eval if this is still required
-      export LD_LIBRARY_PATH="${gcc9.cc.lib}/lib:${glibc.out}/lib:${zlib.out}/lib:${liblapack}/lib:${tk.out}/lib:${flex}/lib:$LD_LIBRARY_PATH"
+      export LD_LIBRARY_PATH="${gcc.cc.lib}/lib:${glibc.out}/lib:${zlib.out}/lib:${liblapack}/lib:${tk.out}/lib:${flex}/lib:$LD_LIBRARY_PATH"
 
       cat <<EOF >> setup.cfg
       _install_hdf5 = False

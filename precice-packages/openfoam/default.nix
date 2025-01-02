@@ -42,7 +42,7 @@
     export WM_ARCH=$BUILD_PLATFORM$WM_COMPILER_LIB_ARCH
     export WM_OPTIONS=$WM_ARCH$WM_COMPILER$WM_PRECISION_OPTION$WM_LABEL_OPTION$WM_COMPILE_OPTION
 
-    export OPENFOAM_SRC_PATH=/build/OpenFOAM-9-c96968a
+    export OPENFOAM_SRC_PATH=/build/OpenFOAM-9-d87800e
 
     export WM_PROJECT_DIR=$OPENFOAM_SRC_PATH
 
@@ -84,7 +84,7 @@ in
 
     src = fetchgit {
       url = "https://github.com/OpenFOAM/OpenFOAM-9.git";
-      rev = "c96968adf6d87570a0e4358be55e740a67e190a6";
+      rev = "d87800e1bde07696061acb231ec68df126a937cc";
       inherit hash;
     };
 
@@ -133,7 +133,7 @@ in
       cp -r ./tutorials $out/
       cp -r ./wmake $out/
 
-      sed -i "s^/build/OpenFOAM-9-c96968a^$out^" $out/bin/set-openfoam-vars
+      sed -i "s^/build/OpenFOAM-9-d87800e^$out^" $out/bin/set-openfoam-vars
 
     '';
 

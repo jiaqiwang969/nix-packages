@@ -3,7 +3,7 @@
   stdenv,
   fetchFromGitHub,
   cmake,
-  gcc9,
+  gcc,
   openmpi,
   boost, # dont use bundled boost
   adolc,
@@ -46,7 +46,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     cmake
-    gcc9
+    gcc
     openmpi
     boost
     adolc
