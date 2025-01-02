@@ -13,13 +13,13 @@
 
 stdenv.mkDerivation rec {
   pname = "precice-openfoam-adapter";
-  version = "OpenFOAM9";  # 修改为 OpenFOAM9 分支
+  version = "master";  # 修改为 OpenFOAM9 分支
 
   src = fetchFromGitHub {
-    owner = "precice";
+    owner = "jiaqiwang969";
     repo = "openfoam-adapter";
-    rev = "a2885806836a4f516abce0be52128aa5083320fe";  # 更新为新的 rev
-    hash = "sha256-C1B1WYct/VRwEBGJp7suCU4z1ymBcjIfBOBiAhrHy1c=";  # 更新为新的 hash
+    rev = "da8ad812db8db18f63876be33ca72da38cb1c9fa";  # 更新为新的 rev
+    hash = "sha256-8S4yooC1DOHd4Se30yTzGtKG5gaIElXSBiHYgA706Do=";  # 更新为新的 hash
   };
 
 
