@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,10 +29,12 @@
       nixpkgs,
       home-manager,
       nixos-generators,
+      nixpkgs-unstable,
     }:
     let
       precice-system-light = {
         system = "x86_64-linux";
+
         modules = [
           home-manager.nixosModules.home-manager
           ./configuration-light.nix
@@ -86,7 +90,18 @@
       };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = import ./precice-packages;
+	overlays = [
+		(import ./precice-packages)
+
+                        # 这里添加一段 overlay：把 pkgs.scotch 指向 nixpkgs-unstable.scotch
+			(final: prev: {
+			 scotch = (import nixpkgs-unstable {
+					 inherit (prev) system;  # 让 system = "x86_64-linux"
+					 config.allowUnfree = true;  # 跟你之前的一样
+					 }).scotch;
+			 })
+	];
+
         config.allowUnfree = true;
         config.permittedInsecurePackages = [ "hdf5-1.10.9" ];
       };
