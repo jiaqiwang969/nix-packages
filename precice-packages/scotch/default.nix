@@ -1,16 +1,16 @@
-{ stdenv, fetchFromGitLab, bison, mpi, flex, zlib, lib }:
+{
+  lib,
+  stdenv,
+  fetchFromGitLab,
+  bison,
+  mpi,
+  flex,
+  zlib,
+}:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation (finalAttrs: {
   pname = "scotch";
   version = "6.1.1";
-
-  src = fetchFromGitLab {
-    domain = "gitlab.inria.fr";
-    owner = "scotch";
-    repo = "scotch";
-    rev = "v${version}";
-    hash = "sha256-GUV6s+P56OAJq9AMe+LZOMPICQO/RuIi+hJAecmO5Wc=";
-  };
 
   buildInputs = [
     bison
@@ -19,9 +19,17 @@ stdenv.mkDerivation {
     zlib
   ];
 
+  src = fetchFromGitLab {
+    domain = "gitlab.inria.fr";
+    owner = "scotch";
+    repo = "scotch";
+    rev = "v${finalAttrs.version}";
+    hash = "sha256-GUV6s+P56OAJq9AMe+LZOMPICQO/RuIi+hJAecmO5Wc=";
+  };
+
   preConfigure = ''
     cd src
-    # 复制模板配置文件
+    #ln -s Make.inc/Makefile.inc.x86-64_pc_linux2 Makefile.inc
     cp Make.inc/Makefile.inc.x86-64_pc_linux2 Makefile.inc
     # 启用共享库的构建
     sed -i 's/^LIB.*=.*/LIB       = .so/' Makefile.inc
@@ -29,16 +37,9 @@ stdenv.mkDerivation {
     sed -i 's/^CCP.*=.*/CCP       = $(CC) -shared/' Makefile.inc
   '';
 
-  buildPhase = ''
-    cd src
-    make scotch
-    make ptscotch
-  '';
+  buildFlags = [ "scotch ptscotch" ];
 
-  installPhase = ''
-    cd src
-    make prefix=$out install
-  '';
+  installFlags = [ "prefix=\${out}" ];
 
   meta = {
     description = "Graph and mesh/hypergraph partitioning, graph clustering, and sparse matrix ordering";
@@ -51,4 +52,4 @@ stdenv.mkDerivation {
     maintainers = [ lib.maintainers.bzizou ];
     platforms = lib.platforms.linux;
   };
-}
+})
