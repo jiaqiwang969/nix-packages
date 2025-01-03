@@ -93,10 +93,7 @@
 	overlays = 
 		(import ./precice-packages) ++ [
 		(final: prev: {
-		 scotch = (import nixpkgs-unstable {
-				 inherit (prev) system;
-				 config.allowUnfree = true;
-				 }).scotch;
+		      scotch = prev.callPackage ./precice-packages/scotch { };
 		 })
 		];
 

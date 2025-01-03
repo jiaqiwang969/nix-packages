@@ -105,5 +105,8 @@
 
     nutils = super.python3Packages.callPackage ./nutils { };
     bottombar = super.python3Packages.callPackage ./bottombar { };
+
+    scotch = super.callPackage ./scotch { };
+
   })
 ]
