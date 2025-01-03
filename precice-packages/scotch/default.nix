@@ -1,6 +1,18 @@
-{ stdenv, fetchFromGitLab, cmake, gfortran, bison, bzip2, mpi, flex, xz, zlib }:
+{
+  bison,
+  bzip2,
+  cmake,
+  fetchFromGitLab,
+  flex,
+  gfortran,
+  lib,
+  mpi,
+  stdenv,
+  zlib,
+  xz,
+}:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation (finalAttrs: {
   pname = "scotch";
   version = "7.0.6";
 
@@ -8,7 +20,7 @@ stdenv.mkDerivation {
     domain = "gitlab.inria.fr";
     owner = "scotch";
     repo = "scotch";
-    rev = "v${version}";
+    rev = "v${finalAttrs.version}";
     hash = "sha256-RW1H0By7jqSM9bT4v6zIuaAZj3iyM1vNsfIcFlRxlkc=";
   };
 
