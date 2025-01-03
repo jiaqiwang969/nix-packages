@@ -36,13 +36,13 @@ stdenv.mkDerivation {
   ];
 
   installPhase = ''
-    make install DESTDIR=$out
+    make install
 
     mkdir -p $out/bin $out/lib $out/include
 
-    mv $out/*/bin/* $out/bin/ 2>/dev/null || true
-    mv $out/*/lib/* $out/lib/ 2>/dev/null || true
-    mv $out/*/include/* $out/include/ 2>/dev/null || true
+    mv $out/bin/* $out/bin/ 2>/dev/null || true
+    mv $out/lib/* $out/lib/ 2>/dev/null || true
+    mv $out/include/* $out/include/ 2>/dev/null || true
 
     find $out -type d -empty -delete
   '';
