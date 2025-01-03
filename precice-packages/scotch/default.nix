@@ -1,56 +1,50 @@
-{ stdenv, fetchFromGitLab, cmake, gfortran, bison, bzip2, mpi, flex, xz, zlib, lib }:
+{
+  lib,
+  stdenv,
+  fetchFromGitLab,
+  bison,
+  mpi,
+  flex,
+  zlib,
+}:
 
-let
-  version = "7.0.6"; # 显式定义版本号
-in
-
-stdenv.mkDerivation {
+stdenv.mkDerivation (finalAttrs: {
   pname = "scotch";
-  inherit version;
+  version = "6.1.1";
+
+  buildInputs = [
+    bison
+    mpi
+    flex
+    zlib
+  ];
 
   src = fetchFromGitLab {
     domain = "gitlab.inria.fr";
     owner = "scotch";
     repo = "scotch";
-    rev = "v${version}"; # 使用显式定义的版本号
-    hash = "sha256-RW1H0By7jqSM9bT4v6zIuaAZj3iyM1vNsfIcFlRxlkc=";
+    rev = "v${finalAttrs.version}";
+    hash = "sha256-GUV6s+P56OAJq9AMe+LZOMPICQO/RuIi+hJAecmO5Wc=";
   };
 
-  cmakeFlags = [
-    "-DBUILD_SHARED_LIBS=ON"
-    "-DCMAKE_INSTALL_PREFIX=$out"
-  ];
-
-  nativeBuildInputs = [
-    cmake
-    gfortran
-  ];
-
-  buildInputs = [
-    bison
-    bzip2
-    mpi
-    flex
-    xz
-    zlib
-  ];
-
-  installPhase = ''
-    make install
-
-    mkdir -p $out/bin $out/lib $out/include
-
-    mv $out/bin/* $out/bin/ 2>/dev/null || true
-    mv $out/lib/* $out/lib/ 2>/dev/null || true
-    mv $out/include/* $out/include/ 2>/dev/null || true
-
-    find $out -type d -empty -delete
+  preConfigure = ''
+    cd src
+    ln -s Make.inc/Makefile.inc.x86-64_pc_linux2 Makefile.inc
   '';
+
+  buildFlags = [ "scotch ptscotch" ];
+
+  installFlags = [ "prefix=\${out}" ];
 
   meta = {
     description = "Graph and mesh/hypergraph partitioning, graph clustering, and sparse matrix ordering";
+    longDescription = ''
+      Scotch is a software package for graph and mesh/hypergraph partitioning, graph clustering,
+      and sparse matrix ordering.
+    '';
     homepage = "http://www.labri.fr/perso/pelegrin/scotch";
     license = lib.licenses.cecill-c;
     maintainers = [ lib.maintainers.bzizou ];
+    platforms = lib.platforms.linux;
   };
-}
+})
