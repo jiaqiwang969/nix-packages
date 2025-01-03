@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitLab, cmake, gfortran, bison, bzip2, mpi, flex, xz, zlib }:
+{lib, stdenv, fetchFromGitLab, cmake, gfortran, bison, bzip2, mpi, flex, xz, zlib }:
 
 stdenv.mkDerivation {
   pname = "scotch";
