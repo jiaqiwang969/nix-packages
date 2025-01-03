@@ -90,17 +90,15 @@
       };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-	overlays = [
-		(import ./precice-packages)
-
-                        # 这里添加一段 overlay：把 pkgs.scotch 指向 nixpkgs-unstable.scotch
-			(final: prev: {
-			 scotch = (import nixpkgs-unstable {
-					 inherit (prev) system;  # 让 system = "x86_64-linux"
-					 config.allowUnfree = true;  # 跟你之前的一样
-					 }).scotch;
-			 })
-	];
+	overlays = 
+		(import ./precice-packages) ++ [
+		(final: prev: {
+		 scotch = (import nixpkgs-unstable {
+				 inherit (prev) system;
+				 config.allowUnfree = true;
+				 }).scotch;
+		 })
+		];
 
         config.allowUnfree = true;
         config.permittedInsecurePackages = [ "hdf5-1.10.9" ];
