@@ -69,17 +69,13 @@
 
     export WM_NCOMPPROCS=$NIX_BUILD_CORES
   
+    export LD_LIBRARY_PATH=$FOAM_LIBBIN/dummy:$LD_LIBRARY_PATH
     export SCOTCH_VERSION=scotch_${scotch.version}
     export SCOTCH_ARCH_PATH=${scotch}
     export LD_LIBRARY_PATH=$SCOTCH_ARCH_PATH/lib:$LD_LIBRARY_PATH
-
-    export LD_LIBRARY_PATH=$FOAM_LIBBIN/$FOAM_MPI:$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=$OPENFOAM_SRC_PATH/src/OpenFOAM/lnInclude:$LD_LIBRARY_PATH
-    
-    export LD_LIBRARY_PATH=$FOAM_LIBBIN:$LD_LIBRARY_PATH
-    export LD_LIBRARY_PATH=$FOAM_LIBBIN/dummy:$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=/run/current-system/sw/lib/:$LD_LIBRARY_PATH
-
+    export LD_LIBRARY_PATH=$FOAM_LIBBIN:$LD_LIBRARY_PATH
   '';
 in
   stdenv.mkDerivation rec {
