@@ -12,6 +12,7 @@
   version,
   hash,
   scotch,
+  glibc,
 }: let
   # TODO: Can we make the last export to /run/current-system better somehow?
   set-vars-script = writeScript "set-openfoam-vars" ''
@@ -73,6 +74,8 @@
     export LD_LIBRARY_PATH=$FOAM_LIBBIN:$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=$FOAM_LIBBIN/dummy:$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=/run/current-system/sw/lib/:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=${glibc.out}/lib:$LD_LIBRARY_PATH
+
 
     export SCOTCH_VERSION=scotch_${scotch.version}
     export SCOTCH_ARCH_PATH=${scotch}
