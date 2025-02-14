@@ -31,7 +31,7 @@
     }:
     let
       precice-system-light = {
-        system = "x86_64-linux";
+        system = "aarch64-linux";
         modules = [
           home-manager.nixosModules.home-manager
           ./configuration-light.nix
@@ -53,14 +53,14 @@
         ];
       };
       precice-system = {
-        system = "x86_64-linux";
+        system = "aarch64-linux";
         modules = [
           home-manager.nixosModules.home-manager
           ./configuration.nix
         ];
       };
       precice-system-vm = {
-        system = "x86_64-linux";
+        system = "aarch64-linux";
         modules = [
           home-manager.nixosModules.home-manager
           ./configuration.nix
@@ -86,7 +86,7 @@
         ];
       };
       pkgs = import nixpkgs {
-        system = "x86_64-linux";
+        system = "aarch64-linux";
         overlays = import ./precice-packages;
         config.allowUnfree = true;
         config.permittedInsecurePackages = [ "hdf5-1.10.9" ];
@@ -106,7 +106,7 @@
       nixosConfigurations.precice-vm = nixpkgs.lib.nixosSystem precice-system;
 
       # Access by running `nix build .#<attribute>`
-      packages.x86_64-linux =
+      packages.aarch64-linux =
         {
           # These are packages that are already available upstream.
           # We simply re-expose them to allow for easy access by the nix tools.
@@ -128,13 +128,13 @@
         };
 
       # Access by running `nix run`
-      apps.x86_64-linux.default = {
+      apps.aarch64-linux.default = {
         type = "app";
-        program = "${packages.x86_64-linux.vm}/bin/run-precice-vm-vm";
+        program = "${packages.aarch64-linux.vm}/bin/run-precice-vm-vm";
       };
 
       # Access by running `nix develop`
-      devShells.x86_64-linux.default = pkgs.mkShell {
+      devShells.aarch64-linux.default = pkgs.mkShell {
         buildInputs =
           (import ./configuration.nix {
             inherit pkgs;
