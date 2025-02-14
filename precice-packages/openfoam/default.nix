@@ -25,7 +25,7 @@ let
 
     export BUILD_PLATFORM=linux
     export WM_COMPILER=Gcc
-    export WM_COMPILER_LIB_ARCH=64
+    export WM_COMPILER_LIB_ARCH=ARM64
     export WM_COMPILER_TYPE=system
     export WM_COMPILE_OPTION=Opt
     export WM_LABEL_OPTION=Int32
